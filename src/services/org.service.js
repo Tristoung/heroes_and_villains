@@ -1,3 +1,5 @@
+import {patchRequest, postRequest, getRequest} from "@/services/axios.service"
+
 async function getAllOrgsFromAPI() {
     return getRequest('/orgs/get', 'GETALLORGS');
 }
@@ -26,6 +28,7 @@ async function getOrgByIdFromAPI(id, orgSecret) {
 
 async function getAllOrgs() {
     let answer = await getAllOrgsFromAPI();
+    console.log(answer);
     return answer;
 }
   
