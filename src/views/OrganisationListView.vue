@@ -1,7 +1,7 @@
 <template>
     <div class="about">
       <h1>This is an organisation list page</h1>
-      <button @click=""> TEST </button>
+      <button @click="test"> TEST </button>
 
     </div>
   </template>
@@ -18,6 +18,9 @@
 
     },
     methods: {
+      test() {
+        console.log("1");
+      }
     }
   }
 </script>
