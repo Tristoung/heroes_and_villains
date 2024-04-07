@@ -10,7 +10,8 @@ async function createOrgInAPI(orgData) {
   
 async function addTeamToOrgInAPI(data, orgSecret) {
     const headers = orgSecret ? { 'org-secret': orgSecret } : {};
-    return patchRequest('/orgs/addteam', data, 'ADDTEAMTOORG', headers);
+    const url = orgSecret ? `/orgs/addteam?org-secret=${orgSecret}` : '/orgs/addteam';
+    return patchRequest(url, data, 'ADDTEAMTOORG', headers);
 }
   
 async function removeTeamFromOrgInAPI(data, orgSecret) {
@@ -20,7 +21,8 @@ async function removeTeamFromOrgInAPI(data, orgSecret) {
   
 async function getOrgByIdFromAPI(id, orgSecret) {
     const headers = orgSecret ? { 'org-secret': orgSecret } : {};
-    return getRequest(`/orgs/getbyid/${id}`, 'GETORGANIZATIONBYID', headers);
+    const url = orgSecret ? `/orgs/getbyid/${id}?org-secret=${orgSecret}` : `/orgs/getbyid/${id}`;
+    return getRequest(url, 'GETORGANIZATIONBYID', headers);
 }
   
   
@@ -51,6 +53,11 @@ async function getOrgById(id, orgSecret) {
     let answer = await getOrgByIdFromAPI(id, orgSecret);
     return answer;
 }
+
+export {
+    addTeamToOrgInAPI,
+    getOrgByIdFromAPI
+};
 
 
 // Exemple d'utilisation de createOrg, addTeamToOrg, removeTeamFromOrg et getOrgById :
