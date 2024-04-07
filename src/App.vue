@@ -1,5 +1,5 @@
 <template>
-  <v-app v-on:click.native="handleClick">
+  <v-app>
     <v-app-bar
       app
       color="secondary"
@@ -15,8 +15,6 @@
           transition="scale-transition"
           width="40"
           @mouseover="openDrawer"
-          @mouseleave="closeDrawer"
-          @click="toggleDrawer"
         />
 
         <v-img
@@ -62,6 +60,10 @@
         <v-list-item :to="{ name: 'organisationList' }">
           <v-list-item-title>Liste d'organisations</v-list-item-title>
         </v-list-item>
+
+        <button @click="closeDrawer">Fermer le menu</button>
+
+
       </v-list>
     </v-navigation-drawer>
 
@@ -76,34 +78,15 @@ export default {
   name: 'App',
 
   data: () => ({
-    drawer: false,
-    selected: false
+    drawer: false
   }),
 
   methods: {
-    toggleDrawer() {
-      if (!this.selected) {
-        this.drawer = true;
-        this.selected = true;
-      } else {
-        this.drawer = false;
-        this.selected = false;
-      }
-    },
-    handleClick(event) {
-      // Vérifier si le tiroir est ouvert et si le clic n'est pas sur le menu ou le logo
-      if (this.drawer && !event.target.closest('.v-navigation-drawer') && !event.target.closest('.shrink')) {
-        this.drawer = false;
-        this.selected = false;
-      }
-    },
     openDrawer() {
-      this.drawer = true; // Open the drawer when mouse is over the logo
+      this.drawer = true; 
     },
     closeDrawer() {
-      if (!this.selected) {
-        this.drawer = false; // Close the drawer when mouse leaves the logo
-      }
+      this.drawer = false;
     }
   }
 };
