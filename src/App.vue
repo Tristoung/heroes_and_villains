@@ -86,7 +86,6 @@ export default {
         this.drawer = true;
         this.selected = true;
       } else {
-        console.log("coucou");
         this.drawer = false;
         this.selected = false;
       }
@@ -94,7 +93,6 @@ export default {
     handleClick(event) {
       // Vérifier si le tiroir est ouvert et si le clic n'est pas sur le menu ou le logo
       if (this.drawer && !event.target.closest('.v-navigation-drawer') && !event.target.closest('.shrink')) {
-        console.log("coucou");
         this.drawer = false;
         this.selected = false;
       }
@@ -104,7 +102,6 @@ export default {
     },
     closeDrawer() {
       if (!this.selected) {
-        console.log("coucou");
         this.drawer = false; // Close the drawer when mouse leaves the logo
       }
     }

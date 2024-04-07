@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { getAllOrgs } from "@/services/org.service";
+import { getOrgById } from '@/services/org.service';
+
 
 Vue.use(Vuex)
 
@@ -62,6 +65,24 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    async fetchOrgs({ commit }) {
+      try {
+        const orgs = await getAllOrgs(); // Appel de la fonction getAllOrgs
+        commit('setOrgs', orgs); // Mise à jour de l'état avec les organisations récupérées
+        this.orgs = orgs;
+      } catch (error) {
+        console.error('Error fetching organizations:', error);
+      }
+    },
+    async getOrgById({ commit }, id, pwd) {
+      try {
+        const org = await getOrgById(id, pwd);
+        commit('setOrg', org);
+        this.currentOrg = org;
+      } catch (error) {
+        console.error('Error getting organization:', error);
+      }
+    },
     setHero({ commit }, hero) {
       commit('setHero', hero);
     },

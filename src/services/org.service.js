@@ -1,12 +1,13 @@
-import {patchRequest, postRequest, getRequest} from "@/services/axios.service"
+// import {patchRequest, postRequest, getRequest} from "@/services/axios.service"
+import {patchRequest, getRequest} from "@/services/axios.service"
 
 async function getAllOrgsFromAPI() {
     return getRequest('/orgs/get', 'GETALLORGS');
 }
   
-async function createOrgInAPI(orgData) {
-    return postRequest('/orgs/create', orgData, 'CREATEORG');
-}
+// async function createOrgInAPI(orgData) {
+//     return postRequest('/orgs/create', orgData, 'CREATEORG');
+// }
   
 async function addTeamToOrgInAPI(data, orgSecret) {
     const headers = orgSecret ? { 'org-secret': orgSecret } : {};
@@ -14,10 +15,10 @@ async function addTeamToOrgInAPI(data, orgSecret) {
     return patchRequest(url, data, 'ADDTEAMTOORG', headers);
 }
   
-async function removeTeamFromOrgInAPI(data, orgSecret) {
-    const headers = orgSecret ? { 'org-secret': orgSecret } : {};
-    return patchRequest('/orgs/removeteam', data, 'REMOVETEAMFROMORG', headers);
-}
+// async function removeTeamFromOrgInAPI(data, orgSecret) {
+//     const headers = orgSecret ? { 'org-secret': orgSecret } : {};
+//     return patchRequest('/orgs/removeteam', data, 'REMOVETEAMFROMORG', headers);
+// }
   
 async function getOrgByIdFromAPI(id, orgSecret) {
     const headers = orgSecret ? { 'org-secret': orgSecret } : {};
@@ -30,24 +31,24 @@ async function getOrgByIdFromAPI(id, orgSecret) {
 
 async function getAllOrgs() {
     let answer = await getAllOrgsFromAPI();
-    console.log(answer);
+    // console.log(answer);
     return answer;
 }
   
-async function createOrg(orgData) {
-    let answer = await createOrgInAPI(orgData);
-    return answer;
-}
+// async function createOrg(orgData) {
+//     let answer = await createOrgInAPI(orgData);
+//     return answer;
+// }
   
-async function addTeamToOrg(data, orgSecret) {
-    let answer = await addTeamToOrgInAPI(data, orgSecret);
-    return answer;
-}
+// async function addTeamToOrg(data, orgSecret) {
+//     let answer = await addTeamToOrgInAPI(data, orgSecret);
+//     return answer;
+// }
   
-async function removeTeamFromOrg(data, orgSecret) {
-    let answer = await removeTeamFromOrgInAPI(data, orgSecret);
-    return answer;
-}
+// async function removeTeamFromOrg(data, orgSecret) {
+//     let answer = await removeTeamFromOrgInAPI(data, orgSecret);
+//     return answer;
+// }
   
 async function getOrgById(id, orgSecret) {
     let answer = await getOrgByIdFromAPI(id, orgSecret);
@@ -56,7 +57,8 @@ async function getOrgById(id, orgSecret) {
 
 export {
     addTeamToOrgInAPI,
-    getOrgByIdFromAPI
+    getOrgById,
+    getAllOrgs
 };
 
 

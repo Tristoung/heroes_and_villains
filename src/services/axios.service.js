@@ -14,7 +14,7 @@ axiosAgent.interceptors.request.use(
         return {
             ...config,
             headers: {
-                ...AuthService.authHeader()
+                // ...AuthService.authHeader()
             },
         };
     },

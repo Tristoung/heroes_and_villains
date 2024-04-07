@@ -36,12 +36,12 @@ const routes = [
   {
     path: '/organisation',
     name: 'organisation',
-    component: () => import('../views/OrganisationListView.vue')
+    component: () => import('../views/CurrentOrganisationView.vue')
   },
   {
     path: '/organisationList',
     name: 'organisationList',
-    component: () => import('../views/CurrentOrganisationView.vue')
+    component: () => import('../views/OrganisationListView.vue')
   },
   
   
